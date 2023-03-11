@@ -4,7 +4,6 @@ import { List } from './ImageGallery.styled';
 import { Component } from 'react';
 import { getImg } from 'Services/GetImg';
 import { Loader } from 'components/Loader/Loader';
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export class ImageGallery extends Component {
