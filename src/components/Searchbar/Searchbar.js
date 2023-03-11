@@ -23,6 +23,7 @@ export class SearchBarForm extends Component {
           </SearchFormButton>
 
           <SearchFormInput
+            name="search"
             type="text"
             autocomplete="off"
             placeholder="Search images and photos"
