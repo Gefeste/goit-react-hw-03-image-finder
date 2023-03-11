@@ -24,7 +24,6 @@ export class ImageGallery extends Component {
       getImg(this.props.searchText, this.props.page, this.props.perPage)
         .then(response => response.json())
         .then(obj => {
-          console.log(obj.hits);
           this.props.StatusStateTrue(obj.hits);
           this.setState({ ImgArray: obj.hits, status: 'resolved' });
           if (obj.hits.length >= 1 && obj.hits.length < 12) {
@@ -50,7 +49,6 @@ export class ImageGallery extends Component {
               theme: 'colored',
             });
           }
-          console.log(obj.hits);
           this.props.StatusStateTrue(obj.hits);
           this.setState({
             ImgArray: [...this.state.ImgArray, ...obj.hits],

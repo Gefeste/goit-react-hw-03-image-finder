@@ -20,7 +20,6 @@ export class Modal extends Component {
   };
 
   handleClickBackdrop = e => {
-    console.log(e.target);
     if (e.target === e.currentTarget) {
       this.props.toogleModal();
     }
