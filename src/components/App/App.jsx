@@ -45,6 +45,7 @@ export class App extends Component {
     });
     const form = event.currentTarget;
     const text = form.elements.search.value.trim();
+
     if (!text) {
       toast.info('Please, enter search term', {
         theme: 'colored',
