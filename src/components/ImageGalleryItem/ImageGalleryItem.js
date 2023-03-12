@@ -9,8 +9,8 @@ export const ImageGalleryItem = ({
   openModal,
 }) => {
   return (
-    <Item key={id} onClick={openModal}>
-      <Image src={src} alt={alt} data-large={largeImageURL} />
+    <Item key={id} onClick={() => openModal(largeImageURL, alt)}>
+      <Image src={src} alt={alt} />
     </Item>
   );
 };

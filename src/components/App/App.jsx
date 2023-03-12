@@ -26,7 +26,7 @@ export class App extends Component {
     this.setState(({ page }) => ({ page: page + 1 }));
   };
 
-  StatusStateTrue = e => {
+  statusState = e => {
     if (e.length === 12) {
       return this.setState({ btnVisible: true });
     }
@@ -37,10 +37,12 @@ export class App extends Component {
 
   onSubmit = event => {
     event.preventDefault();
-    this.setState({ btnVisible: false });
-    this.setState({ page: 1 });
-    this.setState({ perPage: 12 });
-    this.setState({ showModal: false });
+    this.setState({
+      btnVisible: false,
+      page: 1,
+      perPage: 12,
+      showModal: false,
+    });
     const form = event.currentTarget;
     const text = form.elements.search.value.trim();
     if (!text) {
@@ -61,28 +63,17 @@ export class App extends Component {
     }
   };
 
-  openModal = e => {
-    const currentImageUrl = e.target.dataset.large;
-    const currentImageDescription = e.target.alt;
-
-    if (e.currentTarget.nodeName === 'LI') {
-      this.setState(({ showModal }) => ({
-        showModal: !showModal,
-        currentImageUrl: currentImageUrl,
-        currentImageDescription: currentImageDescription,
-      }));
-    }
+  openModal = (img, alt) => {
+    this.setState(({ showModal }) => ({
+      showModal: !showModal,
+      currentImageUrl: img,
+      currentImageDescription: alt,
+    }));
   };
 
   render() {
-    const {
-      state,
-      onSubmit,
-      StatusStateTrue,
-      onLoadImg,
-      toogleModal,
-      openModal,
-    } = this;
+    const { state, onSubmit, statusState, onLoadImg, toogleModal, openModal } =
+      this;
     return (
       <>
         {state.showModal && (
@@ -99,7 +90,7 @@ export class App extends Component {
           page={state.page}
           openModal={openModal}
           searchText={state.searchText}
-          StatusStateTrue={StatusStateTrue}
+          statusState={statusState}
         />
         {state.btnVisible && <LoadMore onClick={onLoadImg} />}
         <ToastContainer />

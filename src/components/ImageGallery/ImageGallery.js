@@ -24,7 +24,7 @@ export class ImageGallery extends Component {
       getImg(this.props.searchText, this.props.page, this.props.perPage)
         .then(response => response.json())
         .then(obj => {
-          this.props.StatusStateTrue(obj.hits);
+          this.props.statusState(obj.hits);
           this.setState({ ImgArray: obj.hits, status: 'resolved' });
           if (obj.hits.length >= 1 && obj.hits.length < 12) {
             toast.warn('there are no more images here', {
@@ -49,7 +49,7 @@ export class ImageGallery extends Component {
               theme: 'colored',
             });
           }
-          this.props.StatusStateTrue(obj.hits);
+          this.props.statusState(obj.hits);
           this.setState({
             ImgArray: [...this.state.ImgArray, ...obj.hits],
             status: 'resolved',
@@ -97,5 +97,5 @@ ImageGallery.propTypes = {
   searchText: propTypes.string.isRequired,
   page: propTypes.number.isRequired,
   perPage: propTypes.number.isRequired,
-  StatusStateTrue: propTypes.func.isRequired,
+  statusState: propTypes.func.isRequired,
 };
